@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, TextWrapper } from './styles';
 
-function Main() {
+function SignIn() {
   return (
     <Container>
       <TextWrapper>Welcome to React Native Seed!</TextWrapper>
@@ -10,4 +10,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default SignIn;
