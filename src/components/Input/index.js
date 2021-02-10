@@ -5,23 +5,21 @@ import PropTypes from 'prop-types';
 import { Container, Icon, TextInput } from './styles';
 
 const propTypes = {
-  onChangeText: PropTypes.func,
-  onBlur: PropTypes.func,
   value: PropTypes.string,
   defaultValue: PropTypes.string,
   icon: PropTypes.string,
+  error: PropTypes.string,
 };
 
 const defaultProps = {
-  onChangeText: () => null,
-  onBlur: () => null,
   value: '',
   defaultValue: '',
   icon: '',
+  error: '',
 };
 
 function TextInputComponent(props) {
-  const { onChangeText, onBlur, value, defaultValue, icon, ...rest } = props;
+  const { value, error, defaultValue, icon, ...rest } = props;
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -37,14 +35,13 @@ function TextInputComponent(props) {
   }, []);
 
   return (
-    <Container>
+    <Container isErrored={!!error} isFocused={isFocused}>
       <Icon
         name={icon}
         size={20}
         color={isFocused || isFilled ? '#ff9000' : '#666360'}
       />
       <TextInput
-        onChangeText={onChangeText}
         onBlur={handleInputBlur}
         onFocus={handleInputFocus}
         value={value}
